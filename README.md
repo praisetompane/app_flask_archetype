@@ -43,27 +43,29 @@ An API driven ETL program to extract data from Wworld Health Organization.
 1. install `python 3.11` or higher.
     - [Python Download](https://www.python.org/downloads/)
 
-2. clone repo:
-    ```shell
-    git clone git@github.com:praisetompane-toy-applications/app_etl.git
-    ```
-## package management:
-- install pipenv: https://pypi.org/project/pipenv/
+## Package Management:
+- ### For non devcontainers usage:
+    - Install [Pipenv](https://pypi.org/project/pipenv/)
 
-- install packages into local environment using pipenv[**only required for first run**]:
-    ```shell
-    pipenv 
-    ```
-## run program:
-- to start system:
-    ```shell
-    ./start_system.sh
-    ```
-- run ETL
-    ```shell
-    # specifically imports malaria_annual_confirmed_cases
-    ./utilities/curl/malaria/malaria_annual_confirmed_cases.sh
-    ```
+    - Install packages into local environment using pipenv:
+        ```shell
+        pipenv install
+        ```
+        
+## Run Program:
+- ### For devcontainers usage:
+    - The system automatically start up as part of loading the project into an editor that supports devcontainers.
+- ### For non devcontainers usage:
+    - Uncomment the "ports" config AND comment out "network_mode: service:postgres_service" in [docker-compose](docker-compose.yml).
+    - Start the system
+        ```shell
+        ./start_system_development.sh
+        ```
+    - Run an ETL
+        ```shell
+        # specifically imports malaria_annual_confirmed_cases
+        ./utilities/curl/malaria/malaria_annual_confirmed_cases.sh
+        ```
 
 ## testing:
 ### unit tests:
@@ -78,17 +80,12 @@ An API driven ETL program to extract data from Wworld Health Organization.
     ```
 
 ### end to end tests:
-- The curl request used can be found in `utilities/curl/`.
-    - example:
-    ```shell
-    ./utilities/curl/malaria/malaria_annual_confirmed_cases.sh
-    ```
-    ![end to end curl example](./docs/malaria_annual_confirmed_cases.png) <br>
+- Unimplemented
 
 ## development:
 - to run system in debug mode:
     ```shell
-        ./start_system.sh
+    ./start_system_development.sh
     ```
 - running in VSCode:
     - startup postgres:
@@ -103,9 +100,6 @@ An API driven ETL program to extract data from Wworld Health Organization.
     - the server will inform you the host and port in the terminal output at the bottom.
     - from here you debug like normal(i.e. add break points, step into code definitions, evaluate code snippets, etc) <br>
 
-<<<<<<< HEAD
-## git conventions:
-=======
 ## Database State Management:
 
 - The database state (i.e. tables, stored procedures, indexes, etc) are managed using [Alembic](https://alembic.sqlalchemy.org/en/latest/).
@@ -124,7 +118,6 @@ An API driven ETL program to extract data from Wworld Health Organization.
     ```
 
 ## Git Conventions:
->>>>>>> 42084f4 (refactor(migrations): convert all scripts to sqlalchemy + alembic)
 - **NB:** the main is locked and all changes must come through a Pull Request.
 - commit messages:
     - provide concise commit messages that describe what you have done.
