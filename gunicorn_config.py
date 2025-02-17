@@ -9,7 +9,7 @@ threads = int(os.environ.get("GUNICORN_THREADS", "4"))
 
 bind = os.environ.get("GUNICORN_BIND", "0.0.0.0:8080")
 
-wsgi_app = "src.app_etl.app:create_app()"
+wsgi_app = "src.app_flask_quickstart.app:create_app()"
 
 forwarded_allow_ips = "*"
 

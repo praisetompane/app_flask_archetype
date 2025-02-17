@@ -1,9 +1,9 @@
 services:
-  app_etl:
+  app_flask_quickstart:
     pull_policy: build
-    image: app_etl:latest
+    image: app_flask_quickstart:latest
     volumes:
-      - .:/app_etl
+      - .:/app_flask_quickstart
     build:
       dockerfile: Dockerfile.dev
     network_mode: service:postgres_service

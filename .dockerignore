@@ -24,7 +24,7 @@
 **/values.dev.yaml
 LICENSE
 README.md
-app_etl_data
+app_flask_quickstart_data
 .mypy_cache
 .pytest_cache
 instance
