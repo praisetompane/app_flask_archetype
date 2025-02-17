@@ -46,6 +46,17 @@
 - The repository is configured to use [devcontainers](https://containers.dev) for development.
     - [Developing inside a Container](https://code.visualstudio.com/docs/devcontainers/containers)
 
+## Project Conversion:
+```shell
+#target_app_name is desired project name
+./convert_project.sh target_app_name
+```
+Steps Exectuted:
+1. Rename all occurrences of `app_flask_quickstart` to `target_app_name`
+2. Renaming main package folder from `app_flask_quickstart` to `target_app_name`
+3. Optional Step: Rename the project folder to user desired project name.
+   This is a manual step, it the folder that you cloned this repo into.
+   
 ## Run Program:
 - The system automatically starts up as part of loading the project into an editor that supports devcontainers.
     - If you wouuld like to run the prod image, change `dockerfile: Dockerfile.dev` to `dockerfile: Dockerfile` in [docker-compose](docker-compose.debug.yml).
