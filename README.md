@@ -1,5 +1,5 @@
-# app_etl
-![build status](https://github.com/praisetompane-toy-applications/app_etl/actions/workflows/app_etl.yaml/badge.svg)
+# app_flask_quickstart
+![build status](https://github.com/praisetompane-toy-applications/app_flask_quickstart/actions/workflows/app.yaml/badge.svg)
 
 ##  Objective:
 
@@ -12,7 +12,7 @@ A toy API driven ETL program to extract data from World Health Organization.
 ## project structure:
 - docs: project documentation lives in here.
 - src: production code lives in folder and is divided in the modules below:
-    - app_etl: project package
+    - app_flask_quickstart: Project package.
         - api:
             - the API to the application lives in this module.
             - the current implementation is a REST API, but a gRPC, CLI API, etc would be implemented in here.
@@ -34,9 +34,9 @@ A toy API driven ETL program to extract data from World Health Organization.
 - tests: test code lives in folder.
     the tests are intentionally separated from production code.
     - benefits:
-        - tests can run against an installed version after executing `pip install .`.
-        - tests can run against the local copy with an editable install after executing `pip install --edit`.
-        - when using Docker, the entire app_etl folder can be copied without needing to exclude tests, which we don't release to PROD.
+        - Tests can run against an installed version after executing `pip install .`.
+        - Tests can run against the local copy with an editable install after executing `pip install --edit`.
+        - When using Docker, the entire app_flask_quickstart folder can be copied without needing to exclude tests, which we don't release to PROD.
     - more in depth discussion here: https://docs.pytest.org/en/latest/explanation/goodpractices.html#choosing-a-test-layout-import-rules
 
 - utilities: any useful scripts, such as curl & postman requests, JSON payloads, software installations, etc.
@@ -90,7 +90,7 @@ Steps Exectuted:
 ## Database State Management:
 
 - The database state (i.e. tables, stored procedures, indexes, etc) are managed using [Alembic](https://alembic.sqlalchemy.org/en/latest/).
-    - Migrations location: src/app_etl/migrations
+    - Migrations location: src/app_flask_quickstart/migrations
     - Migrations naming scheme: YYYY_MM_DD_HHMM_rev_nanme
         - uses alembic's full revision scheme defined in alembic.ini
         - example: `2025_02_08_0825-98af2865f6fc_create_schema_etl`

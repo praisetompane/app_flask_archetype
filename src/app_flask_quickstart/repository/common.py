@@ -1,7 +1,7 @@
 from dotenv import dotenv_values
-from src.app_etl.repository.postgres.connection import PostgresConnection
-from src.app_etl.repository.postgres.postgres_configuration import PostgresConfiguration
-from src.app_etl.repository.etl_repository import ETLRepository
+from src.app_flask_quickstart.repository.postgres.connection import PostgresConnection
+from src.app_flask_quickstart.repository.postgres.postgres_configuration import PostgresConfiguration
+from src.app_flask_quickstart.repository.etl_repository import ETLRepository
 
 config = dotenv_values(".env")
 

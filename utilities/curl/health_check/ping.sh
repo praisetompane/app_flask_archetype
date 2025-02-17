@@ -1,1 +1,1 @@
-curl 'http://localhost:8080/app_etl/api/ping/'
+curl 'http://localhost:8080/app_flask_quickstart/api/ping/'

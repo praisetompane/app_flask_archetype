@@ -1,9 +1,9 @@
 {
-	"name": "app_etl",
+	"name": "app_flask_quickstart",
 	"dockerComposeFile": [
 		"../docker-compose.yml"
 	],
-	"service": "app_etl",
+	"service": "app_flask_quickstart",
 	"customizations": {
 		"vscode": {
 			"extensions": [
@@ -20,5 +20,5 @@
 	"forwardPorts": [
 		"8080:8080"
 	],
-	"workspaceFolder": "/app_etl"
+	"workspaceFolder": "/app_flask_quickstart"
 }
