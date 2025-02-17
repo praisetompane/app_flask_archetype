@@ -2,7 +2,7 @@ FROM mcr.microsoft.com/devcontainers/python:3.11
 
 EXPOSE 8080
 
-WORKDIR /app_etl
+WORKDIR /app_flask_quickstart
 
 ENV PYTHONUNBUFFERED=1
 
@@ -10,8 +10,8 @@ COPY . .
 
 RUN python -m pip install -r requirements.dev.txt
 
-RUN adduser -u 5678 --disabled-password --gecos "" app_etl && chown -R app_etl /app_etl
-USER app_etl
+RUN adduser -u 5678 --disabled-password --gecos "" app_flask_quickstart && chown -R app_flask_quickstart /app_flask_quickstart
+USER app_flask_quickstart
 
 RUN chmod +x ./entrypoint.dev.sh
 

@@ -3,10 +3,10 @@ import sys
 from logging import log
 from datetime import datetime
 from flask import Blueprint, Response, request, make_response
-from src.app_etl.repository.common import etl_repository
-from src.app_etl.etl.etl_register import etls
+from src.app_flask_quickstart.repository.common import etl_repository
+from src.app_flask_quickstart.etl.etl_register import etls
 
-from src.app_etl.etl.runner import ETLRunner
+from src.app_flask_quickstart.etl.runner import ETLRunner
 
 from logging import log
 
