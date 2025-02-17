@@ -5,7 +5,7 @@
 #   target_app_name: str
 #
 target_app_name=$1
-current_project_name=app_etl
+current_project_name=app_flask_quickstart
 
 if [ -z "$target_app_name" ]; then
     echo "target_app_name cannot be empty. Please supply package name."

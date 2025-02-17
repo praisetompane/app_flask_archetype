@@ -1,6 +1,6 @@
-from src.app_etl.etl.etl_interface import ETLInterface
-from src.app_etl.gateway.global_health_data import retrieve_indicator_data
-from src.app_etl.repository.malaria_annual_confirmed_cases_repository import (
+from src.app_flask_quickstart.etl.etl_interface import ETLInterface
+from src.app_flask_quickstart.gateway.global_health_data import retrieve_indicator_data
+from src.app_flask_quickstart.repository.malaria_annual_confirmed_cases_repository import (
     MalariaAnnualConfirmedCasesRepository,
 )
 

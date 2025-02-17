@@ -5,7 +5,7 @@ from sqlalchemy import create_engine
 from alembic import context
 
 from dotenv import dotenv_values
-from src.app_etl.repository.postgres.postgres_configuration import PostgresConfiguration
+from src.app_flask_quickstart.repository.postgres.postgres_configuration import PostgresConfiguration
 
 # this is the Alembic Config object, which provides
 # access to the values within the .ini file in use.
