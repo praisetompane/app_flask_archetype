@@ -1,6 +1,6 @@
 #!/bin/zsh
 
-# rename app_flask_archetype to a target project name
+# rename app_flask_archetype to a desired target project name
 # input:
 #   target_app_name: str
 #

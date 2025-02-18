@@ -1,13 +1,17 @@
 # app_flask_archetype
-![build status](https://github.com/praisetompane-toy-applications/app_flask_archetype/actions/workflows/app.yaml/badge.svg)
+![build status](https://github.com/praisetompane-utilities/app_flask_archetype/actions/workflows/app.yaml/badge.svg)
 
 ##  Objective:
-- A toy API driven ETL application to experiment with the Flask(with gunicorn), SQLAlchemy, Alembic and Postgres.
-- Extract data from World Health Organization.
-
-## Supported Datasets:
-- Malaria Annual Confirmed Cases
-- ...
+- A Flask archetype project with common patterns to enable focusing on the unique aspects of your application instead of setup ceremony.
+- Features:
+    - HTTP REST API
+        - Application Logic Resource
+        - Health Check Resource
+    - External API Gateway
+    - Alembic Migrations
+    - SQLAlchemy Repository
+        - Postgres Integration
+    - Tests
 
 ## Project Structure:
 - docs: Project documentation lives in here.
@@ -26,9 +30,9 @@
         - gateway:
             - All external interaction objects(e.g. files, external APIs etc) live in this module.
         - model:
-            - The domain models for Poker live in this in this module.
+            - The domain models for the project live in this in this module.
         - repository:
-            - Data interactions(persitence and access) concerns live in this module.
+            - Data interactions(persistence and access) concerns live in this module.
         - app.py:
             Entry point to startup the application
 - tests: Test code lives in folder.
@@ -36,7 +40,6 @@
     - benefits:
         - Tests can run against an installed version after executing `pip install .`.
         - Tests can run against the local copy with an editable install after executing `pip install --edit`.
-        - When using Docker, the entire app_flask_archetype folder can be copied without needing to exclude tests, which we don't release to PROD.
     - more in depth discussion here: https://docs.pytest.org/en/latest/explanation/goodpractices.html#choosing-a-test-layout-import-rules
 
 - utilities: Any useful scripts, such as curl & postman requests, JSON payloads, software installations, etc.
@@ -51,19 +54,18 @@
 #target_app_name is desired project name
 ./convert_project.sh target_app_name
 ```
-Steps Exectuted:
-1. Rename all occurrences of `app_flask_archetype` to `target_app_name`
-2. Renaming main package folder from `app_flask_archetype` to `target_app_name`
-3. Optional Step: Rename the project folder to user desired project name.
-   This is a manual step, it the folder that you cloned this repo into.
+### Steps Executed:
+1. Renames all occurrences of `app_flask_archetype` to `target_app_name`
+2. Optional Step: Rename the project folder to user desired project name.
+   This is a manual step, it is the folder you cloned this repository into.
    
 ## Run Program:
 - The system automatically starts up as part of loading the project into an editor that supports devcontainers.
-    - If you wouuld like to run the prod image, change `dockerfile: Dockerfile.dev` to `dockerfile: Dockerfile` in [docker-compose](docker-compose.debug.yml).
-- Run an ETL
+    - If you would like to run the prod image, change `dockerfile: Dockerfile.dev` to `dockerfile: Dockerfile` in [docker-compose](docker-compose.debug.yaml).
+- Run an endpoint.
     ```shell
     # specifically imports malaria_annual_confirmed_cases
-    ./utilities/curl/malaria/malaria_annual_confirmed_cases.sh
+    ./utilities/curl/malaria/who_malaria_annual_confirmed_cases.sh
     ```
 
 ## Testing:
@@ -71,29 +73,33 @@ Steps Exectuted:
     ```shell
     pytest
     ```
-- ### end to end tests:
+- ### Run Spellcheck:
+    ```shell
+    pyspelling -c spellcheck.yaml
+    ```
+- ### Run end-to-end tests:
     - Not Implemented
 
 ## Debugging:
 - Running in debug mode and debug with VSCode:
     - Open the "Run and Debug" view.
-    - Click the green play button.<br>
+    - Execute the "Python Debugger: Remote Attach" task.
         ![start system output](./docs/vscode_debugging.png)<br>
     - Allow debugging without frozen modules by clicking "Debug Anyway" once the debugger is installed and ready.
-        ![bypass frozen modueles](./docs/vscode_debugging_frozen.png)
+        ![bypass frozen modules](./docs/vscode_debugging_frozen.png)
     - The server will inform you the host and port in the terminal output at the bottom.<br>
-    - From here you debug like normal(i.e. add break points, step into code definitions, evaluate code snippets, etc) <br>
+    - Debug you normally do(i.e. add break points, step into code definitions, evaluate code snippets, etc) <br>
 
-- If you wouuld like to debug the prod image, change `dockerfile: Dockerfile.dev` to `dockerfile: Dockerfile` in [docker-compose.debug](docker-compose.debug.yml).
+- If you would like to debug the prod image, change `dockerfile: Dockerfile.dev` to `dockerfile: Dockerfile` in [docker-compose.debug](docker-compose.debug.yaml).
 
 
 ## Database State Management:
 
 - The database state (i.e. tables, stored procedures, indexes, etc) are managed using [Alembic](https://alembic.sqlalchemy.org/en/latest/).
     - Migrations location: src/app_flask_archetype/migrations
-    - Migrations naming scheme: YYYY_MM_DD_HHMM_rev_nanme
+    - Migrations naming scheme: YYYY_MM_DD_HHMM_rev_name
         - uses alembic's full revision scheme defined in alembic.ini
-        - example: `2025_02_08_0825-98af2865f6fc_create_schema_etl`
+        - example: `2025_02_10_1349-9e2772c6755f_create_schema_computation.py`
     - Current database state can be queried with `SELECT * FROM public.alembic_version;`
 - To upgrade the database to latest migrations:
     ```shell
