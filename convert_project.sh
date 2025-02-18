@@ -7,6 +7,11 @@
 target_app_name=$1
 current_project_name=app_flask_archetype
 
+function process_file() {
+    file=$1
+    sed -i "" -e "s/$current_project_name/$target_app_name/g" $file
+}
+
 if [ -z "$target_app_name" ]; then
     echo "target_app_name cannot be empty. Please supply package name."
 else
@@ -16,7 +21,7 @@ else
         for file in **/*.*; do
         if [[ $file != *".png"* ]]; then
             echo "Processing $file\n"
-            sed -i "" -e "s/$current_project_name/$target_app_name/g" $file
+            process_file $file
         fi
         done
     echo "Done Processing Files"
@@ -24,14 +29,14 @@ else
     echo "Processing devcontainer folder"
         for file in .devcontainer/*.*; do
             echo "Processing $file\n"
-            sed -i "" -e "s/$current_project_name/$target_app_name/g" $file
+            process_file $file
         done
     echo "Done Processing devcontainers Folder"
 
     echo "Processing "dot files""
         for file in **/.*; do
             echo "Processing $file\n"
-            sed -i "" -e "s/$current_project_name/$target_app_name/g" $file
+            process_file $file
         done
     echo "Done Processing "dot files""
 
