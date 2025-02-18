@@ -1,7 +1,12 @@
 from dotenv import dotenv_values
 from src.app_flask_quickstart.repository.postgres.connection import PostgresConnection
 from src.app_flask_quickstart.repository.postgres.postgres_configuration import PostgresConfiguration
-from src.app_flask_quickstart.repository.etl_repository import ETLRepository
+from src.app_flask_quickstart.repository.computation_result_repository import ComputationResultRepostory
+
+"""
+    Guide:
+        Place to initilize your application's common database objects.
+"""
 
 config = dotenv_values(".env")
 
@@ -15,4 +20,4 @@ postgres_config = PostgresConfiguration(
 
 postgres_connection = PostgresConnection(postgres_config)
 
-etl_repository = ETLRepository(postgres_connection)
+computation_result_repository = ComputationResultRepostory(postgres_connection)
