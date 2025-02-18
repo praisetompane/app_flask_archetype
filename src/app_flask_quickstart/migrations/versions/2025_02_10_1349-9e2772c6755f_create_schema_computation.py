@@ -1,4 +1,4 @@
-"""create schema malaria
+"""create schema computation
 
 Revision ID: 9e2772c6755f
 Revises: 95f38b6bd38e
@@ -14,16 +14,16 @@ import sqlalchemy as sa
 
 # revision identifiers, used by Alembic.
 revision: str = "9e2772c6755f"
-down_revision: Union[str, None] = "95f38b6bd38e"
+down_revision: Union[str, None] = None
 branch_labels: Union[str, Sequence[str], None] = None
 depends_on: Union[str, Sequence[str], None] = None
 
 
 def upgrade() -> None:
     conn = op.get_bind()
-    conn.execute(sa.DDL("CREATE SCHEMA IF NOT EXISTS malaria;"))
+    conn.execute(sa.DDL("CREATE SCHEMA IF NOT EXISTS computation;"))
 
 
 def downgrade() -> None:
     conn = op.get_bind()
-    conn.execute(sa.DDL("DROP SCHEMA IF EXISTS malaria;"))
+    conn.execute(sa.DDL("DROP SCHEMA IF EXISTS computation;"))
