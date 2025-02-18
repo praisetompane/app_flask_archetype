@@ -1,9 +1,9 @@
 services:
-  app_flask_quickstart:
+  app_flask_archetype:
     pull_policy: build
-    image: app_flask_quickstart:latest
+    image: app_flask_archetype:latest
     volumes:
-      - .:/app_flask_quickstart
+      - .:/app_flask_archetype
     build:
       dockerfile: Dockerfile.dev
     network_mode: service:postgres_service

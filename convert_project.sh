@@ -1,11 +1,11 @@
 #!/bin/zsh
 
-# rename app_flask_quickstart to a target project name
+# rename app_flask_archetype to a target project name
 # input:
 #   target_app_name: str
 #
 target_app_name=$1
-current_project_name=app_flask_quickstart
+current_project_name=app_flask_archetype
 
 if [ -z "$target_app_name" ]; then
     echo "target_app_name cannot be empty. Please supply package name."
@@ -35,7 +35,7 @@ else
         done
     echo "Done Processing "dot files""
 
-    echo "Renaming main package folder from app_flask_quickstart to $target_app_name"
+    echo "Renaming main package folder from app_flask_archetype to $target_app_name"
         mv ./src/$current_project_name ./src/$target_app_name
     echo "Done renaming main package folder"
 fi
