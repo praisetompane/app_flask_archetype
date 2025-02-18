@@ -69,16 +69,22 @@
     ```
 
 ## Testing:
-- ### Run unit and integration tests:
+- ### Execute Unit Tests:
     ```shell
-    pytest
+    pytest tests/app_flask_archetype/unit
     ```
-- ### Run Spellcheck:
+- ### Execute Integration Tests:
+    ```shell
+    pytest tests/app_flask_archetype/integration
+    ```
+- ### Execute Spellcheck:
     ```shell
     pyspelling -c spellcheck.yaml
     ```
-- ### Run end-to-end tests:
-    - Not Implemented
+- ### Execute System Tests:
+    ```shell
+    Not Implemented
+    ```
 
 ## Debugging:
 - Running in debug mode and debug with VSCode:
