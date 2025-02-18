@@ -8,11 +8,11 @@ from src.app_flask_archetype.repository.schema.computation import Computation
 
 """
     Guide:
-        Place to implement your application's specific databse related logic/goal.
+        Place to implement your application's specific database related logic/goal.
 """
 
 
-class ComputationResultRepostory:
+class ComputationResultRepository:
     def __init__(self, database_connection: PostgresConnection) -> None:
         self.database_connection = database_connection
         self.source_schema = Computation(

@@ -1,7 +1,6 @@
 import logging
 import sys
 from logging import log
-from datetime import datetime
 from flask import Blueprint, Response, request, make_response
 from src.app_flask_archetype.repository.common import computation_result_repository
 from src.app_flask_archetype.api.validator import validate

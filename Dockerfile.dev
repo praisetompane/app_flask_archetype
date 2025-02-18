@@ -10,6 +10,11 @@ COPY . .
 
 RUN python -m pip install -r requirements.dev.txt
 
+RUN export DEBIAN_FRONTEND=noninteractive
+
+RUN apt-get update \
+    && apt-get install -y aspell
+
 RUN adduser -u 5678 --disabled-password --gecos "" app_flask_archetype && chown -R app_flask_archetype /app_flask_archetype
 USER app_flask_archetype
 

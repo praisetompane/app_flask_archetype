@@ -1,11 +1,11 @@
 from dotenv import dotenv_values
 from src.app_flask_archetype.repository.postgres.connection import PostgresConnection
 from src.app_flask_archetype.repository.postgres.postgres_configuration import PostgresConfiguration
-from src.app_flask_archetype.repository.computation_result_repository import ComputationResultRepostory
+from src.app_flask_archetype.repository.computation_result_repository import ComputationResultRepository
 
 """
     Guide:
-        Place to initilize your application's common database objects.
+        Place to initialize your application's common database objects.
 """
 
 config = dotenv_values(".env")
@@ -20,4 +20,5 @@ postgres_config = PostgresConfiguration(
 
 postgres_connection = PostgresConnection(postgres_config)
 
-computation_result_repository = ComputationResultRepostory(postgres_connection)
+computation_result_repository = ComputationResultRepository(
+    postgres_connection)

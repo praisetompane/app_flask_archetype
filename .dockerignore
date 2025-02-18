@@ -3,6 +3,7 @@
 **/.classpath
 **/.dockerignore
 **/.git
+**/.github
 **/.gitignore
 **/.project
 **/.settings
@@ -28,3 +29,11 @@ app_flask_archetype_data
 .mypy_cache
 .pytest_cache
 instance
+tests
+docs
+start_system_development.sh
+stop_system_development.sh
+convert_project.sh
+.devcontainer
+.env
+utilities
