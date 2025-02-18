@@ -1,9 +1,9 @@
 {
-	"name": "app_flask_quickstart",
+	"name": "app_flask_archetype",
 	"dockerComposeFile": [
 		"../docker-compose.yml"
 	],
-	"service": "app_flask_quickstart",
+	"service": "app_flask_archetype",
 	"customizations": {
 		"vscode": {
 			"extensions": [
@@ -20,5 +20,5 @@
 	"forwardPorts": [
 		"8080:8080"
 	],
-	"workspaceFolder": "/app_flask_quickstart"
+	"workspaceFolder": "/app_flask_archetype"
 }
