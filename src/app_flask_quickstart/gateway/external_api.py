@@ -3,6 +3,11 @@ import requests
 from logging import log
 import logging
 
+"""
+    Guide:
+        Place to implement your application's external API data requests.
+"""
+
 
 def retrieve_data(indicator_code):
     try:

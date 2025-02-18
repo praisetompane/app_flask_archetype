@@ -1,8 +1,8 @@
-"""create table whoghomalariaannualconfirmedcases
+"""create table computation_result
 
-Revision ID: 53983f446d4f
-Revises: da990513db52
-Create Date: 2025-02-10 14:03:12.348877
+Revision ID: f7950a5c213d
+Revises: 9e2772c6755f
+Create Date: 2025-02-10 13:51:24.494766
 
 """
 
@@ -13,8 +13,8 @@ import sqlalchemy as sa
 
 
 # revision identifiers, used by Alembic.
-revision: str = "53983f446d4f"
-down_revision: Union[str, None] = "da990513db52"
+revision: str = "f7950a5c213d"
+down_revision: Union[str, None] = "9e2772c6755f"
 branch_labels: Union[str, Sequence[str], None] = None
 depends_on: Union[str, Sequence[str], None] = None
 
@@ -24,7 +24,7 @@ def upgrade() -> None:
     conn.execute(
         sa.DDL(
             """
-            CREATE TABLE IF NOT EXISTS sourcedata.whoghomalariaannualconfirmedcases
+            CREATE TABLE IF NOT EXISTS computation.computation_result
             (
                 "Id" int4 NULL,
                 "IndicatorCode" varchar(20) NULL,
@@ -60,5 +60,5 @@ def upgrade() -> None:
 def downgrade() -> None:
     conn = op.get_bind()
     conn.execute(
-        sa.DDL("DROP TABLE IF EXISTS sourcedata.whoghomalariaannualconfirmedcases;")
+        sa.DDL("DROP TABLE IF EXISTS computation.computation_result;")
     )
