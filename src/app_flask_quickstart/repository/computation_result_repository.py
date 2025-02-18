@@ -4,21 +4,25 @@ from logging import log
 from sqlalchemy import insert, select
 
 from src.app_flask_quickstart.repository.postgres.connection import PostgresConnection
-from src.app_flask_quickstart.repository.schema.malaria import Malaria
-from src.app_flask_quickstart.repository.schema.source_data import SourceData
+from src.app_flask_quickstart.repository.schema.computation import Computation
+
+"""
+    Guide:
+        Place to implement your application's specific databse related logic/goal.
+"""
 
 
-class MalariaAnnualConfirmedCasesRepository:
+class ComputationResultRepostory:
     def __init__(self, database_connection: PostgresConnection) -> None:
         self.database_connection = database_connection
-        self.source_schema = SourceData(database_connection.get_connection_engine())
-        self.target_schema = Malaria(database_connection.get_connection_engine())
+        self.source_schema = Computation(
+            database_connection.get_connection_engine())
 
-    def save_source_data(self, data) -> None:
+    def save(self, data) -> None:
         with self.database_connection.get_connection() as conn:
             result = conn.execute(
                 insert(
-                    self.source_schema.who_gho_malaria_annual_confirmed_cases_table()
+                    self.source_schema.source_data_table()
                 ),
                 data,
             )
@@ -26,9 +30,9 @@ class MalariaAnnualConfirmedCasesRepository:
 
             log(logging.INFO, f"successfully saved {result.rowcount}")
 
-    def retrieve_source_data(self):
+    def retrieve(self):
         table_columns = (
-            self.source_schema.who_gho_malaria_annual_confirmed_cases_table().c
+            self.source_schema.source_data_table().c
         )
         with self.database_connection.get_connection() as conn:
             result = conn.execute(
@@ -41,13 +45,3 @@ class MalariaAnnualConfirmedCasesRepository:
                 )
             )
             return result.mappings().all()
-
-    def save_target_data(self, data) -> None:
-        with self.database_connection.get_connection() as conn:
-            result = conn.execute(
-                insert(self.target_schema.annual_confirmed_cases_table()),
-                data,
-            )
-            conn.commit()
-
-            log(logging.INFO, f"successfully saved {result.rowcount}")
