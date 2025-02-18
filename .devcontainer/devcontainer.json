@@ -1,7 +1,7 @@
 {
 	"name": "app_flask_archetype",
 	"dockerComposeFile": [
-		"../docker-compose.yml"
+		"../docker-compose.yaml"
 	],
 	"service": "app_flask_archetype",
 	"customizations": {
