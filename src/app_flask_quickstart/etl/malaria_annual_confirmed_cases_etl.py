@@ -1,5 +1,5 @@
 from src.app_flask_quickstart.etl.etl_interface import ETLInterface
-from src.app_flask_quickstart.gateway.global_health_data import retrieve_indicator_data
+from src.app_flask_quickstart.gateway.external_api import retrieve_data
 from src.app_flask_quickstart.repository.malaria_annual_confirmed_cases_repository import (
     MalariaAnnualConfirmedCasesRepository,
 )
@@ -47,8 +47,7 @@ class MalariaAnnualConfirmedCasesETL(ETLInterface):
                             persist record.
         """
         self.malariaannualconfirmedcasesrepository.save_source_data(
-            retrieve_indicator_data(self._indicator_code)
-        )
+            retrieve_data(self._indicator_code))
 
     def retrieve_source_data(self):
         """
