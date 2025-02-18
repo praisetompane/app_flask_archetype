@@ -1,5 +1,5 @@
-# app_flask_quickstart
-![build status](https://github.com/praisetompane-toy-applications/app_flask_quickstart/actions/workflows/app.yaml/badge.svg)
+# app_flask_archetype
+![build status](https://github.com/praisetompane-toy-applications/app_flask_archetype/actions/workflows/app.yaml/badge.svg)
 
 ##  Objective:
 - A toy API driven ETL application to experiment with the Flask(with gunicorn), SQLAlchemy, Alembic and Postgres.
@@ -12,7 +12,7 @@
 ## Project Structure:
 - docs: Project documentation lives in here.
 - src: production code lives in folder and is divided in the modules below:
-    - app_flask_quickstart: Project package.
+    - app_flask_archetype: Project package.
         - api:
             - The API to the application lives in this module.
             - The current implementation is a REST API, but a gRPC, CLI API, etc would be implemented in here.
@@ -36,7 +36,7 @@
     - benefits:
         - Tests can run against an installed version after executing `pip install .`.
         - Tests can run against the local copy with an editable install after executing `pip install --edit`.
-        - When using Docker, the entire app_flask_quickstart folder can be copied without needing to exclude tests, which we don't release to PROD.
+        - When using Docker, the entire app_flask_archetype folder can be copied without needing to exclude tests, which we don't release to PROD.
     - more in depth discussion here: https://docs.pytest.org/en/latest/explanation/goodpractices.html#choosing-a-test-layout-import-rules
 
 - utilities: Any useful scripts, such as curl & postman requests, JSON payloads, software installations, etc.
@@ -52,8 +52,8 @@
 ./convert_project.sh target_app_name
 ```
 Steps Exectuted:
-1. Rename all occurrences of `app_flask_quickstart` to `target_app_name`
-2. Renaming main package folder from `app_flask_quickstart` to `target_app_name`
+1. Rename all occurrences of `app_flask_archetype` to `target_app_name`
+2. Renaming main package folder from `app_flask_archetype` to `target_app_name`
 3. Optional Step: Rename the project folder to user desired project name.
    This is a manual step, it the folder that you cloned this repo into.
    
@@ -90,7 +90,7 @@ Steps Exectuted:
 ## Database State Management:
 
 - The database state (i.e. tables, stored procedures, indexes, etc) are managed using [Alembic](https://alembic.sqlalchemy.org/en/latest/).
-    - Migrations location: src/app_flask_quickstart/migrations
+    - Migrations location: src/app_flask_archetype/migrations
     - Migrations naming scheme: YYYY_MM_DD_HHMM_rev_nanme
         - uses alembic's full revision scheme defined in alembic.ini
         - example: `2025_02_08_0825-98af2865f6fc_create_schema_etl`

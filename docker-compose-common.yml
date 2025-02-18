@@ -13,7 +13,7 @@ services:
       env_file:
         - .env
       volumes:
-        - ./app_flask_quickstart_data/:/var/lib/postgresql/data/
+        - ./app_flask_archetype_data/:/var/lib/postgresql/data/
       healthcheck:
         test: ["CMD-SHELL", "pg_isready -U ${POSTGRES_USER} -d ${POSTGRES_PASSWORD}"]
         start_period: 0s

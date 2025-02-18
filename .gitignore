@@ -164,6 +164,6 @@ Docker.dmg
 
 # Postgres
 postgres_data
-app_flask_quickstart_data
+app_flask_archetype_data
 
 .DS_Store

@@ -3,10 +3,10 @@ import sys
 from logging import log
 from datetime import datetime
 from flask import Blueprint, Response, request, make_response
-from src.app_flask_quickstart.repository.common import computation_result_repository
-from src.app_flask_quickstart.api.validator import validate
-from src.app_flask_quickstart.core.computation import compute
-from src.app_flask_quickstart.gateway.external_api import retrieve_data
+from src.app_flask_archetype.repository.common import computation_result_repository
+from src.app_flask_archetype.api.validator import validate
+from src.app_flask_archetype.core.computation import compute
+from src.app_flask_archetype.gateway.external_api import retrieve_data
 from logging import log
 
 logging.basicConfig(stream=sys.stdout, level=logging.INFO)
