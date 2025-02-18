@@ -18,9 +18,9 @@ jobs:
         run: |
           python -m pip install --upgrade pip
           pip install -r requirements.dev.txt
+      - name: Test
+        run: pytest
       - name: Spell Check
         uses: rojopolis/spellcheck-github-actions@0.45.0
         with:                                        
           output_file: spellcheck-output.txt
-      - name: Test
-        run: pytest
