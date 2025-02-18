@@ -1,10 +1,10 @@
 services:
   app_flask_archetype:
-    pull_policy: build
     image: app_flask_archetype:latest
     volumes:
       - .:/app_flask_archetype
     build:
+      context: .
       dockerfile: Dockerfile.dev
     network_mode: service:postgres_service
     # if you want to edit outside a devcontainer,uncomment the "ports" config below AND comment out "network_mode: service:postgres_service"
@@ -15,5 +15,5 @@ services:
         condition: service_healthy
   postgres_service:
     extends:
-      file: docker-compose-common.yml
+      file: docker-compose-common.yaml
       service: postgres_service
