@@ -2,7 +2,7 @@ FROM mcr.microsoft.com/devcontainers/python:3.11
 
 EXPOSE 8080
 
-WORKDIR /app_flask_quickstart
+WORKDIR /app_flask_archetype
 
 ENV PYTHONUNBUFFERED=1
 
@@ -10,8 +10,8 @@ COPY . .
 
 RUN python -m pip install -r requirements.dev.txt
 
-RUN adduser -u 5678 --disabled-password --gecos "" app_flask_quickstart && chown -R app_flask_quickstart /app_flask_quickstart
-USER app_flask_quickstart
+RUN adduser -u 5678 --disabled-password --gecos "" app_flask_archetype && chown -R app_flask_archetype /app_flask_archetype
+USER app_flask_archetype
 
 RUN chmod +x ./entrypoint.dev.sh
 
