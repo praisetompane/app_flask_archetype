@@ -1,7 +1,7 @@
 # app_flask_archetype
 ![build status](https://github.com/praisetompane-utilities/app_flask_archetype/actions/workflows/app.yaml/badge.svg)
 
-##  Objective:
+##  Objectives
 - A Flask archetype project with common patterns to enable focusing on the unique aspects of your application instead of setup ceremony.
 - Features:
     - HTTP REST API
@@ -13,7 +13,7 @@
         - Postgres Integration
     - Tests
 
-## Project Structure:
+## Project Structure
 - docs: Project documentation lives in here.
 - src: production code lives in folder and is divided in the modules below:
     - app_flask_archetype: Project package.
@@ -44,62 +44,65 @@
 
 - utilities: Any useful scripts, such as curl & postman requests, JSON payloads, software installations, etc.
 
-## Setup Instructions:
-- Install [Docker](https://docs.docker.com/get-started/)
+## Dependencies
+- [Docker](https://docs.docker.com/get-started/)
+
+## Setup Instructions
 - The repository is configured to use [devcontainers](https://containers.dev) for development.
     - [Developing inside a Container](https://code.visualstudio.com/docs/devcontainers/containers)
 
-## Project Conversion:
-```shell
-#target_app_name is desired project name
-./convert_project.sh target_app_name
-```
-### Steps Executed:
-1. Renames all occurrences of `app_flask_archetype` to `target_app_name`
-2. Optional Step: Rename the project folder to user desired project name.
-   This is a manual step, it is the folder you cloned this repository into.
+## Usage
+- Project Conversion
+    ```shell
+    #target_app_name is desired project name
+    ./convert_project.sh target_app_name
+    ```
+- Steps Executed:
+    - Renames all occurrences of `app_flask_archetype` to `target_app_name`
+    - Optional Step: Rename the project folder to user desired project name.
+    This is a manual step, it is the folder you cloned this repository into.
    
-## Run Program:
+## Run Program
 - The system automatically starts up as part of loading the project into an editor that supports devcontainers.
     - If you would like to run the prod image, change `dockerfile: Dockerfile.dev` to `dockerfile: Dockerfile` in [docker-compose](docker-compose.debug.yaml).
+
 - Run an endpoint.
     ```shell
     # specifically imports malaria_annual_confirmed_cases
     ./utilities/curl/malaria/who_malaria_annual_confirmed_cases.sh
     ```
 
-## Testing:
-- ### Execute Unit Tests:
+- Debugging
+    - Running in debug mode and debug with VSCode:
+        - Open the "Run and Debug" view.
+        - Execute the "Python Debugger: Remote Attach" task.
+            ![start system output](./docs/vscode_debugging.png)<br>
+        - Allow debugging without frozen modules by clicking "Debug Anyway" once the debugger is installed and ready.
+            ![bypass frozen modules](./docs/vscode_debugging_frozen.png)
+        - The server will inform you the host and port in the terminal output at the bottom.<br>
+        - Debug you normally do(i.e. add break points, step into code definitions, evaluate code snippets, etc) <br>
+
+    - If you would like to debug the prod image, change `dockerfile: Dockerfile.dev` to `dockerfile: Dockerfile` in [docker-compose.debug](docker-compose.debug.yaml).
+
+## Testing
+- ### Execute Unit Tests
     ```shell
     pytest tests/app_flask_archetype/unit
     ```
-- ### Execute Integration Tests:
+- ### Execute Integration Tests
     ```shell
     pytest tests/app_flask_archetype/integration
     ```
-- ### Execute Spellcheck:
+- ### Execute Spellcheck
     ```shell
     pyspelling -c spellcheck.yaml
     ```
-- ### Execute System Tests:
+- ### Execute System Tests
     ```shell
     Not Implemented
     ```
 
-## Debugging:
-- Running in debug mode and debug with VSCode:
-    - Open the "Run and Debug" view.
-    - Execute the "Python Debugger: Remote Attach" task.
-        ![start system output](./docs/vscode_debugging.png)<br>
-    - Allow debugging without frozen modules by clicking "Debug Anyway" once the debugger is installed and ready.
-        ![bypass frozen modules](./docs/vscode_debugging_frozen.png)
-    - The server will inform you the host and port in the terminal output at the bottom.<br>
-    - Debug you normally do(i.e. add break points, step into code definitions, evaluate code snippets, etc) <br>
-
-- If you would like to debug the prod image, change `dockerfile: Dockerfile.dev` to `dockerfile: Dockerfile` in [docker-compose.debug](docker-compose.debug.yaml).
-
-
-## Database State Management:
+## Database State Management
 
 - The database state (i.e. tables, stored procedures, indexes, etc) are managed using [Alembic](https://alembic.sqlalchemy.org/en/latest/).
     - Migrations location: src/app_flask_archetype/migrations
@@ -116,7 +119,7 @@
     alembic downgrade base
     ```
 
-## Git Conventions:
+## Git Conventions
 - **NB:** The main is locked and all changes must come through a Pull Request.
 - Commit Messages:
     - Provide concise commit messages that describe what you have done.
