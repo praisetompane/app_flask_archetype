@@ -8,9 +8,8 @@
         - Application Logic Resource
         - Health Check Resource
     - External API Gateway
+    - Repository Pattern implemented with SQLAlchemy and Postgres
     - Alembic Migrations
-    - SQLAlchemy Repository
-        - Postgres Integration
     - Tests
 
 ## Project Structure
