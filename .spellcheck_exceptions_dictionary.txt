@@ -76,6 +76,7 @@ TimeDimType
 azureedge
 freecodecamp
 ghoapi
+pypa
 
 
 # places
@@ -106,6 +107,7 @@ VSCode
 werkzeug
 bool
 varchar
+Pipenv
 
 
 # urls
