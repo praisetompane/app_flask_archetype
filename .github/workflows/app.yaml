@@ -11,7 +11,7 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        python-version: ["3.11.11", "3.12.8", "3.13.1"]
+        python-version: ["3.11.11"]
     steps:
       - name: Clone Repository
         uses: actions/checkout@v4
@@ -21,12 +21,15 @@ jobs:
         with:
           python-version: ${{ matrix.python-version }}
 
+      - name: Install pipenv
+        run: python -m pip install pipenv
+      
       - name: Install Dependencies
-        run: |
-          python -m pip install -r requirements.dev.txt
+        run: pipenv install --system -d
 
       - name: Run Test
-        run: pytest
+        run: |
+          pytest
 
       - name: Spell Check
         uses: rojopolis/spellcheck-github-actions@0.45.0

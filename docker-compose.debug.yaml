@@ -1,6 +1,7 @@
 services:
   app_flask_archetype:
     image: app_flask_archetype:latest
+    pull_policy: build
     volumes:
       - .:/app_flask_archetype
     build:
