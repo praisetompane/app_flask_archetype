@@ -5,12 +5,13 @@
 - A Flask archetype project with common patterns to enable focusing on the unique aspects of your application instead of setup ceremony.
 - Features:
     - HTTP REST API
-        - Application Logic Resource
-        - Health Check Resource
-    - External API Gateway
-    - Repository Pattern implemented with SQLAlchemy and Postgres
-    - Alembic Migrations
-    - Tests
+        - [Application Logic Resource](src/app_flask_archetype/api/api.py)
+        - [Health Check Resource](src/app_flask_archetype/api/health_check.py)
+        - [Input Validator](src/app_flask_archetype/api/validator.py)
+    - [External API Gateway](src/app_flask_archetype/gateway/external_api.py)
+    - [Repository Pattern implemented with SQLAlchemy and Postgres](src/app_flask_archetype/repository/computation_result_repository.py)
+    - [Alembic Migrations](src/app_flask_archetype/migrations/versions)
+    - [Tests](tests/app_flask_archetype)
 
 ## Project Structure
 - docs: Project documentation lives in here.
@@ -39,12 +40,16 @@
     - benefits:
         - Tests can run against an installed version after executing `pip install .`.
         - Tests can run against the local copy with an editable install after executing `pip install --edit`.
-    - more in depth discussion here: https://docs.pytest.org/en/latest/explanation/goodpractices.html#choosing-a-test-layout-import-rules
+    - [more in depth discussion here](https://docs.pytest.org/en/latest/explanation/goodpractices.html#choosing-a-test-layout-import-rules)
 
 - utilities: any useful scripts, such as curl & postman requests, JSON payloads, software installations, etc.
 
 ## Dependencies
 - [Docker](https://docs.docker.com/get-started/)
+
+## Package Management
+- [Pipenv](https://pipenv.pypa.io/en/latest/)
+    - [Quick Reference](https://pipenv.pypa.io/en/latest/cli.html#install)
 
 ## Setup Instructions
 - The repository is configured to use [devcontainers](https://containers.dev) for development.
@@ -102,7 +107,6 @@
     ```
 
 ## Database State Management
-
 - The database state (i.e. tables, stored procedures, indexes, etc) are managed using [Alembic](https://alembic.sqlalchemy.org/en/latest/).
     - Migrations location: src/app_flask_archetype/migrations
     - Migrations naming scheme: YYYY_MM_DD_HHMM_rev_name
@@ -117,6 +121,11 @@
     ```shell
     alembic downgrade base
     ```
+
+## Spell Check
+```shell
+pyspelling -c spellcheck.yaml
+```
 
 ## Git Conventions
 - **NB:** The main is locked and all changes must come through a Pull Request.

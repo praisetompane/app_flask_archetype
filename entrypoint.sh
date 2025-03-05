@@ -1,8 +1,8 @@
 #!/bin/sh
 
 echo "Running Database Migrations"
-    alembic upgrade head
+    .venv/bin/alembic upgrade head
 echo "Done Running Database Migrations\n"
 
 echo "Starting The Application"
-    gunicorn --config gunicorn_config.py
+    .venv/bin/gunicorn --config gunicorn_config.py
