@@ -5,4 +5,4 @@ echo "Running Database Migrations"
 echo "Done Running Database Migrations\n"
 
 echo "Starting The Application"
-   flask run --debug
+    flask run --debug

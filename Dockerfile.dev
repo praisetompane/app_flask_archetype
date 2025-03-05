@@ -8,7 +8,7 @@ ENV PYTHONUNBUFFERED=1
 
 COPY . .
 
-RUN python -m pip install -r requirements.dev.txt
+RUN pipenv sync --system -d
 
 RUN apt-get update \
     && apt-get install aspell -y
