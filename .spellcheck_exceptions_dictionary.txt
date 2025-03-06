@@ -51,7 +51,7 @@ praisetompane
 Dockerfile
 dockerfile
 validator
-
+async
 
 # domain specific
 ComputationResultRepository
@@ -70,6 +70,7 @@ TimeDimensionBegin
 TimeDimensionEnd
 TimeDimensionValue
 TimeDimType
+ClientSession
 
 
 # institutions
@@ -108,6 +109,8 @@ werkzeug
 bool
 varchar
 Pipenv
+aiohttp
+asyncio
 
 
 # urls
