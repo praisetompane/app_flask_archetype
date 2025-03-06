@@ -7,6 +7,7 @@ from src.app_flask_archetype.api.validator import validate
 from src.app_flask_archetype.core.computation import compute
 from src.app_flask_archetype.gateway.external_api import retrieve_data
 from logging import log
+import asyncio
 
 logging.basicConfig(stream=sys.stdout, level=logging.INFO)
 
@@ -32,7 +33,7 @@ def computation() -> Response:
             Guide:
                 Place to plug in delegation/s to your application's specific components to implement the endpoints goal/job/function.
         """
-        data = retrieve_data("MALARIA_CONF_CASES")
+        data = asyncio.run(retrieve_data("MALARIA_CONF_CASES"))
         computation_result = compute(data)
         computation_result_repository.save(computation_result)
 

@@ -1,24 +1,28 @@
-import requests
-
 from logging import log
 import logging
-
+import aiohttp
+import asyncio
 """
     Guide:
         Place to implement your application's external API data requests.
 """
 
 
-def retrieve_data(indicator_code):
-    try:
-        url = f"https://ghoapi.azureedge.net/api/{indicator_code}"
-        log(logging.INFO, f"Contacting API: {url} ")
-        request = requests.get(url)
-        return request.json()["value"]
-    except Exception as e:
-        log(logging.ERROR,
-            f"Encountered an error while invoking endpoint. ERROR = {e}")
-        raise
+async def execute_request(session, url):
+    async with session.get(url) as resp:
+        return await resp.json()
+
+async def retrieve_data(indicator_code):
+    async with aiohttp.ClientSession() as session:
+        try:
+            url = f"https://ghoapi.azureedge.net/api/{indicator_code}"
+            log(logging.INFO, f"Contacting API: {url} ")
+            result = await execute_request(session, url)
+            return result["value"]
+        except Exception as e:
+            log(logging.ERROR,
+                f"Encountered an error while invoking endpoint. ERROR = {e}")
+            raise
 
 
 def send_data(data):
