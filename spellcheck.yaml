@@ -10,5 +10,4 @@ matrix:
     sources:
       - "**/*.md"
       - "**/*.txt"
-      - "**/*.py"
     default_encoding: utf-8

@@ -1,7 +1,6 @@
 from logging import log
 import logging
 import aiohttp
-import asyncio
 """
     Guide:
         Place to implement your application's external API data requests.
