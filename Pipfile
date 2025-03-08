@@ -9,7 +9,6 @@ flask = "*"
 gunicorn = "*"
 psycopg2 = "*"
 python-dotenv = "*"
-requests = "*"
 sqlalchemy = "*"
 aiohttp = "*"
 

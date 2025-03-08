@@ -8,6 +8,9 @@ services:
       context: .
       dockerfile: Dockerfile.dev
     network_mode: service:postgres_service
+    # if you want to edit outside a devcontainer,uncomment the "ports" config below AND comment out "network_mode: service:postgres_service"
+    # ports:
+      # - "8080:8080"
     depends_on:
       postgres_service:
         condition: service_healthy
