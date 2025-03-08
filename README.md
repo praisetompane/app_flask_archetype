@@ -17,33 +17,31 @@
 
 ## Project Structure
 - docs: Project documentation lives in here.
-- src: Production code lives in folder and is divided in the modules below:
+- src: Production code lives in this folder and is divided in the modules below:
     - app_flask_archetype: Project package.
         - api:
             - The HTTP API to the application lives in this module.
-            - The current implementation is a HTTp REST API, but a gRPC, CLI API, etc would be implemented in here.
+            - The current implementation is a HTTP REST API, but a gRPC, CLI API, etc would be implemented in here.
         - config:
-            - Configurable values live in here.
-            - As the system scales, you could migrate these into a database to allow independently
-                changing config without restarting the application.
+            - Configuration lives in here.
         - core:
             - The domain logic of the application lives in this module.
         - gateway:
-            - All external interaction objects(e.g. files, external APIs etc) live in this module.
+            - Integration with external objects(e.g. files, external APIs etc) lives in here.
         - model:
-            - The domain models for the project live in this in this module.
+            - The domain model lives in here.
         - repository:
-            - Data interactions(persistence and access) concerns live in this module.
+            - Integration with internal data store (persistence and access) lives in here.
         - app.py:
-            Entry point to startup the application
-- tests: Test code lives in folder.
-    The tests are intentionally separated from production code.
-    - benefits:
-        - Tests can run against an installed version of the app after using `pip install .`.
-        - Tests can run against the local copy with an editable install after executing `pip install --edit`.
-    - [more in depth discussion here](https://docs.pytest.org/en/latest/explanation/goodpractices.html#choosing-a-test-layout-import-rules)
+            - The application factory to boottrap the system lives in here.
+- tests: Test code lives in here.
+    - The tests are intentionally separated from production code.
+        - Benefits og this structure:
+            - Tests can run against an installed version of the app after using `pip install .`.
+            - Tests can run against the local copy with an editable install after executing `pip install --edit`.
+        - [more in depth discussion here](https://docs.pytest.org/en/latest/explanation/goodpractices.html#choosing-a-test-layout-import-rules)
 
-- utilities: Any useful scripts, such as curl & postman requests, JSON payloads, software installations, etc.
+- utilities: Adhoc utilities such as scripts, curl & postman requests, JSON payloads, software installations, etc live in here.
 
 ## Dependencies
 - [Docker](https://docs.docker.com/get-started/)
@@ -68,36 +66,36 @@
     This is a manual step, it is the folder you cloned this repository into.
    
 ## Run Program
-- The system automatically starts up as part of loading the project into an editor that supports devcontainers.
+- The system automatically starts up as part of loading the project into an editor/IDE that supports devcontainers.
     - If you would like to run the prod image, change `dockerfile: Dockerfile.dev` to `dockerfile: Dockerfile` in [docker-compose](docker-compose.debug.yaml).
 
-- Manually start
-    - Make the required update detailed here: [postgres_service](https://github.com/praisetompane/app_flask_archetype/blob/aa89f106fa6485ab00719d4df5c094621604fb94/docker-compose.yaml#L11)
-    - Execute start script
-    ```shell
-    ./start_system_development.sh
-    ```
+- Manual
+    - Execute the required update detailed here: [postgres_service](https://github.com/praisetompane/app_flask_archetype/blob/aa89f106fa6485ab00719d4df5c094621604fb94/docker-compose.yaml#L11)
+    - Manually start
+        ```shell
+        ./start_system_development.sh
+        ```
 
-- Manually stop
-    ```shell
-    ./stop_system_development.sh
-    ```
+    - Manually stop
+        ```shell
+        ./stop_system_development.sh
+        ```
 
 - Invoke an endpoint
     ```shell
-    # specifically imports malaria_annual_confirmed_cases
+    # specifically imports malaria_annual_confirmed_cases from WHO API
     ./utilities/curl/computation/computation.sh
     ```
 
 - Debugging
-    - Running in debug mode and debug with VSCode:
+    - Debug with VSCode:
         - Open the "Run and Debug" view.
         - Execute the "Python Debugger: Remote Attach" task.
             ![start system output](./docs/vscode_debugging.png)<br>
-        - Allow debugging without frozen modules by clicking "Debug Anyway" once the debugger is installed and ready.
+        - Allow debugging without frozen modules by clicking "Debug Anyway".
             ![bypass frozen modules](./docs/vscode_debugging_frozen.png)
         - The server will inform you the host and port in the terminal output at the bottom.<br>
-        - Debug you normally do(i.e. add break points, step into code definitions, evaluate code snippets, etc) <br>
+        - Debug as you normally do(i.e. add break points, step into code definitions, evaluate code snippets, etc) <br>
 
     - If you would like to debug the prod image, change `dockerfile: Dockerfile.dev` to `dockerfile: Dockerfile` in [docker-compose.debug](docker-compose.debug.yaml).
 

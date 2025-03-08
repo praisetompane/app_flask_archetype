@@ -1,7 +1,5 @@
 from logging.config import fileConfig
-
 from sqlalchemy import create_engine
-
 from alembic import context
 
 from src.app_flask_archetype.repository.common import postgres_config

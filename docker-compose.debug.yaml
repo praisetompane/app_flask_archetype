@@ -1,7 +1,6 @@
 services:
   app_flask_archetype:
     image: app_flask_archetype:latest
-    pull_policy: build
     volumes:
       - .:/app_flask_archetype
     build:
@@ -16,7 +15,12 @@ services:
     entrypoint: ["sh", "-c", "python /usr/local/bin/debugpy --wait-for-client --listen 0.0.0.0:5678 -m flask run"]
     environment:
       - FLASK_APP=src/app_flask_archetype/app.py
-
+      - POSTGRES_HOST=postgres_service
+      - POSTGRES_PORT=5432
+      - POSTGRES_DB=app_flask_archetype
+      - POSTGRES_USER=app_flask_archetype
+      - POSTGRES_PASSWORD=postgres
+      - PORT=5000
   postgres_service:
     extends:
       file: docker-compose-common.yaml

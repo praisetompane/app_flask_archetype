@@ -28,8 +28,7 @@ jobs:
         run: pipenv install --system -d
 
       - name: Run Test
-        run: |
-          pytest
+        run: pytest
 
       - name: Spell Check
         uses: rojopolis/spellcheck-github-actions@0.45.0

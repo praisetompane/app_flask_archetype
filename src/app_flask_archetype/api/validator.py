@@ -1,6 +1,6 @@
 """
     Guide:
-        Place to implement your application's HTTP REST API endpoint input validation.
+        Place to implement your application's REST API endpoint input validation.
 """
 
 
