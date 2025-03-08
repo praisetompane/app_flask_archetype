@@ -2,8 +2,9 @@
 ![build status](https://github.com/praisetompane-utilities/app_flask_archetype/actions/workflows/app.yaml/badge.svg)
 
 ##  Objectives
-- A Flask archetype project with common patterns to enable focusing on the unique aspects of your application instead of setup ceremony.
+- A Flask archetype with common patterns to enable focusing on the unique aspects of your application instead of setup ceremony.
 - Features:
+    - [Project Conversion](#usage)
     - HTTP REST API
         - [Application Logic Resource](src/app_flask_archetype/api/api.py)
         - [Health Check Resource](src/app_flask_archetype/api/health_check.py)
@@ -12,18 +13,18 @@
     - [Repository Pattern implemented with SQLAlchemy and Postgres](src/app_flask_archetype/repository/computation_result_repository.py)
     - [Alembic Migrations](src/app_flask_archetype/migrations/versions)
     - [Tests](tests/app_flask_archetype)
+    - [GitHub Actions CI/CD](.github/workflows/app.yaml)
 
 ## Project Structure
 - docs: Project documentation lives in here.
-- src: production code lives in folder and is divided in the modules below:
+- src: Production code lives in folder and is divided in the modules below:
     - app_flask_archetype: Project package.
         - api:
-            - The API to the application lives in this module.
-            - The current implementation is a REST API, but a gRPC, CLI API, etc would be implemented in here.
+            - The HTTP API to the application lives in this module.
+            - The current implementation is a HTTp REST API, but a gRPC, CLI API, etc would be implemented in here.
         - config:
             - Configurable values live in here.
-            - These are values such as Hand Ranks, Card Ranks.
-                - as the system scales, you could migrate these into a database to allow independently
+            - As the system scales, you could migrate these into a database to allow independently
                 changing config without restarting the application.
         - core:
             - The domain logic of the application lives in this module.
@@ -38,7 +39,7 @@
 - tests: Test code lives in folder.
     The tests are intentionally separated from production code.
     - benefits:
-        - Tests can run against an installed version after executing `pip install .`.
+        - Tests can run against an installed version of the app after using `pip install .`.
         - Tests can run against the local copy with an editable install after executing `pip install --edit`.
     - [more in depth discussion here](https://docs.pytest.org/en/latest/explanation/goodpractices.html#choosing-a-test-layout-import-rules)
 
@@ -56,7 +57,7 @@
     - [Developing inside a Container](https://code.visualstudio.com/docs/devcontainers/containers)
 
 ## Usage
-- Project Conversion
+- Project Conversion: Converts the project name to your desired name. This renames all import, configuration, etc.
     ```shell
     #target_app_name is desired project name
     ./convert_project.sh target_app_name
@@ -70,10 +71,22 @@
 - The system automatically starts up as part of loading the project into an editor that supports devcontainers.
     - If you would like to run the prod image, change `dockerfile: Dockerfile.dev` to `dockerfile: Dockerfile` in [docker-compose](docker-compose.debug.yaml).
 
-- Run an endpoint.
+- Manually start
+    - Make the required update detailed here: [postgres_service](https://github.com/praisetompane/app_flask_archetype/blob/aa89f106fa6485ab00719d4df5c094621604fb94/docker-compose.yaml#L11)
+    - Execute start script
+    ```shell
+    ./start_system_development.sh
+    ```
+
+- Manually stop
+    ```shell
+    ./stop_system_development.sh
+    ```
+
+- Invoke an endpoint
     ```shell
     # specifically imports malaria_annual_confirmed_cases
-    ./utilities/curl/malaria/who_malaria_annual_confirmed_cases.sh
+    ./utilities/curl/computation/computation.sh
     ```
 
 - Debugging
@@ -97,13 +110,13 @@
     ```shell
     pytest tests/app_flask_archetype/integration
     ```
-- ### Execute Spellcheck
-    ```shell
-    pyspelling -c spellcheck.yaml
-    ```
 - ### Execute System Tests
     ```shell
     Not Implemented
+    ```
+- ### Execute Spellcheck
+    ```shell
+    pyspelling -c spellcheck.yaml
     ```
 
 ## Database State Management
@@ -139,6 +152,5 @@ pyspelling -c spellcheck.yaml
         - https://www.conventionalcommits.org/en/v1.0.0/
         - https://www.freecodecamp.org/news/how-to-write-better-git-commit-messages/
 
-## Demo:
 
 **Disclaimer**: This is still work in progress.
