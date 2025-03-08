@@ -8,7 +8,7 @@ from src.app_flask_archetype.repository.schema.computation import Computation
 
 """
     Guide:
-        Place to implement your application's specific database related logic/goal.
+        Place to implement your application's database related logic/concerns.
 """
 
 
