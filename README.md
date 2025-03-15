@@ -70,7 +70,7 @@
     - If you would like to run the prod image, change `dockerfile: Dockerfile.dev` to `dockerfile: Dockerfile` in [docker-compose](docker-compose.debug.yaml).
 
 - Manual
-    - Execute the required update detailed here: [postgres_service](https://github.com/praisetompane/app_flask_archetype/blob/aa89f106fa6485ab00719d4df5c094621604fb94/docker-compose.yaml#L11)
+    - Execute the required update detailed here: [app_flask_archetype_postgres_service](https://github.com/praisetompane/app_flask_archetype/blob/aa89f106fa6485ab00719d4df5c094621604fb94/docker-compose.yaml#L11)
     - Manually start
         ```shell
         ./start_system_development.sh

@@ -10,18 +10,20 @@ services:
       - 8080:8080
       - 5678:5678
     depends_on:
-      postgres_service:
+      app_flask_archetype_postgres_service:
         condition: service_healthy
-    entrypoint: ["sh", "-c", "python /usr/local/bin/debugpy --wait-for-client --listen 0.0.0.0:5678 -m flask run"]
+    entrypoint: [ "sh", "-c", "python /usr/local/bin/debugpy --wait-for-client --listen 0.0.0.0:5678 -m flask run" ]
     environment:
-      - FLASK_APP=src/app_flask_archetype/app.py
-      - POSTGRES_HOST=postgres_service
-      - POSTGRES_PORT=5432
-      - POSTGRES_DB=app_flask_archetype
-      - POSTGRES_USER=app_flask_archetype
-      - POSTGRES_PASSWORD=postgres
-      - PORT=5000
-  postgres_service:
+      - FLASK_APP=${FLASK_APP}
+      - POSTGRES_HOST=${POSTGRES_HOST}
+      - PORT=$(APPLICATION_PORT)
+      - POSTGRES_USER=${POSTGRES_USER}
+      - POSTGRES_PASSWORD=${POSTGRES_PASSWORD}
+      - POSTGRES_DB=${POSTGRES_DB}
+      - POSTGRES_PORT=${POSTGRES_PORT}
+    env_file:
+      - .env
+  app_flask_archetype_postgres_service:
     extends:
       file: docker-compose-common.yaml
-      service: postgres_service
+      service: app_flask_archetype_postgres_service
