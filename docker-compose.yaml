@@ -6,21 +6,23 @@ services:
     build:
       context: .
       dockerfile: Dockerfile.dev
-    network_mode: service:postgres_service
-    # if you want to edit outside a devcontainer,uncomment the "ports" config below AND comment out "network_mode: service:postgres_service"
+    network_mode: service:app_flask_archetype_postgres_service
+    # if you want to edit outside a devcontainer,uncomment the "ports" config below AND comment out "network_mode: service:app_flask_archetype_postgres_service"
     # ports:
-      # - "8080:8080"
+    # - "8080:8080"
     environment:
-      - POSTGRES_HOST=postgres_service
-      - POSTGRES_PORT=5432
-      - POSTGRES_DB=app_flask_archetype
-      - POSTGRES_USER=app_flask_archetype
-      - POSTGRES_PASSWORD=postgres
-      - PORT=5000
+      - POSTGRES_HOST=${POSTGRES_HOST}
+      - PORT=$(APPLICATION_PORT)
+      - POSTGRES_USER=${POSTGRES_USER}
+      - POSTGRES_PASSWORD=${POSTGRES_PASSWORD}
+      - POSTGRES_DB=${POSTGRES_DB}
+      - POSTGRES_PORT=${POSTGRES_PORT}
+    env_file:
+      - .env
     depends_on:
-      postgres_service:
+      app_flask_archetype_postgres_service:
         condition: service_healthy
-  postgres_service:
+  app_flask_archetype_postgres_service:
     extends:
       file: docker-compose-common.yaml
-      service: postgres_service
+      service: app_flask_archetype_postgres_service
