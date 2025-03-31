@@ -43,4 +43,9 @@ else
     echo "Renaming main package folder from app_flask_archetype to $target_app_name"
         mv ./src/$current_project_name ./src/$target_app_name
     echo "Done renaming main package folder"
+
+    echo "Removing .env from tracking and adding it to gitignore. You can explicitly add this again for a toy project, should you choose to so."
+        git rm --cached .env
+        echo ".env" >> .gitignore
+    echo "Done"
 fi
