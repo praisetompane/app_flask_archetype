@@ -1,0 +1,7 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: app-flask-archetype
+data:
+  application_port: "5000"
+  flask_app: "src/app_flask_archetype/app.py"

@@ -1,0 +1,46 @@
+apiVersion: v1
+kind: Deployment
+metadata:
+  name: app_flask_archetype
+  labels:
+    name: app_flask_archetype
+spec:
+  replicas: 2
+  selector:
+    matchLabels: 
+        app: app_flask_archetype
+    template:
+      metadata:
+        labels:
+            app: app_flask_archetype
+    spec:
+      containers:
+      - name: app_flask_archetype
+        image: app_flask_archetype:latest
+        env:
+        - name: POSTGRES_HOST
+          valueFrom:
+            secretkeyRef:
+              name: postgres-credentials
+              key: postgres_host
+        - name: POSTGRES_PORT
+          valueFrom:
+            secretkeyRef:
+              name: postgres-credentials
+              key: postgres_port
+        - name: POSTGRES_DB
+          valueFrom:
+            secretkeyRef:
+              name: postgres-credentials
+              key: postgres_db
+        - name: POSTGRES_USER
+          valueFrom:
+            secretkeyRef:
+              name: postgres-credentials
+              key: postgres_user
+        - name: POSTGRES_PASSWORD
+          valueFrom:
+            secretkeyRef:
+              name: postgres-credentials
+              key: postgres_password 
+      restartPolicy: Always
