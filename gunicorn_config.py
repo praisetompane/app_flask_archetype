@@ -10,7 +10,7 @@ threads = int(os.environ.get("GUNICORN_THREADS", "4"))
 port = os.environ.get("PORT")
 bind = os.environ.get(F"GUNICORN_BIND", "0.0.0.0:{port}")
 
-wsgi_app = "src.app_flask_archetype.app:create_app()"
+wsgi_app = "app_flask_archetype.app:create_app()"
 
 forwarded_allow_ips = "*"
 

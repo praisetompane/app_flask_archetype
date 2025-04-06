@@ -1,6 +1,6 @@
-from src.app_flask_archetype.repository.postgres.connection import PostgresConnection
-from src.app_flask_archetype.repository.postgres.postgres_configuration import PostgresConfiguration
-from src.app_flask_archetype.repository.computation_result_repository import ComputationResultRepository
+from app_flask_archetype.repository.postgres.connection import PostgresConnection
+from app_flask_archetype.repository.postgres.postgres_configuration import PostgresConfiguration
+from app_flask_archetype.repository.computation_result_repository import ComputationResultRepository
 import os
 
 """

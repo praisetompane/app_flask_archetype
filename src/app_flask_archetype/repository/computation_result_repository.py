@@ -3,8 +3,8 @@ from logging import log
 
 from sqlalchemy import insert, select
 
-from src.app_flask_archetype.repository.postgres.connection import PostgresConnection
-from src.app_flask_archetype.repository.schema.computation import Computation
+from app_flask_archetype.repository.postgres.connection import PostgresConnection
+from app_flask_archetype.repository.schema.computation import Computation
 
 """
     Guide:
