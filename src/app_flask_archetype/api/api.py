@@ -2,10 +2,10 @@ import logging
 import sys
 from logging import log
 from flask import Blueprint, Response, request, make_response
-from src.app_flask_archetype.repository.common import computation_result_repository
-from src.app_flask_archetype.api.validator import validate
-from src.app_flask_archetype.core.computation import compute
-from src.app_flask_archetype.gateway.external_api import retrieve_data
+from app_flask_archetype.repository.common import computation_result_repository
+from app_flask_archetype.api.validator import validate
+from app_flask_archetype.core.computation import compute
+from app_flask_archetype.gateway.external_api import retrieve_data
 from logging import log
 import asyncio
 

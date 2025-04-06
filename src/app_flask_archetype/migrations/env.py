@@ -2,7 +2,7 @@ from logging.config import fileConfig
 from sqlalchemy import create_engine
 from alembic import context
 
-from src.app_flask_archetype.repository.common import postgres_config
+from app_flask_archetype.repository.common import postgres_config
 
 # this is the Alembic Config object, which provides
 # access to the values within the .ini file in use.
