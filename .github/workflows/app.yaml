@@ -1,6 +1,6 @@
 name: app_flask_archetype
 
-on: 
+on:
   push:
     branches: [main]
   pull_request:
@@ -11,7 +11,7 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        python-version: ["3.11.11"]
+        python-version: ["3.13"]
     steps:
       - name: Clone Repository
         uses: actions/checkout@v4
@@ -23,7 +23,7 @@ jobs:
 
       - name: Install pipenv
         run: python -m pip install pipenv
-      
+
       - name: Install Dependencies
         run: pipenv install --system -d
 
@@ -32,5 +32,5 @@ jobs:
 
       - name: Spell Check
         uses: rojopolis/spellcheck-github-actions@0.45.0
-        with:                                        
+        with:
           output_file: spellcheck-output.txt

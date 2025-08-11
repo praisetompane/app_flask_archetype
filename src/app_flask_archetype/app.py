@@ -3,8 +3,8 @@ import sys
 import os
 from logging import log
 from flask import Flask
-from app_flask_archetype.api.api import app_api
-from app_flask_archetype.api.health_check import health_check_api
+from src.app_flask_archetype.api.api import app_api
+from src.app_flask_archetype.api.health_check import health_check_api
 
 logging.basicConfig(stream=sys.stdout, level=logging.INFO)
 
