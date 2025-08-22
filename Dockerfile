@@ -1,5 +1,5 @@
 # build image
-FROM mcr.microsoft.com/devcontainers/python:3.11 AS builder
+FROM mcr.microsoft.com/devcontainers/python:3.13 AS builder
 
 WORKDIR /app_flask_archetype
 
@@ -10,7 +10,7 @@ ADD Pipfile.lock Pipfile /app_flask_archetype/
 RUN pipenv sync
 
 # prodcution image
-FROM python:3.11-slim-bookworm AS production
+FROM python:3.13-slim-bookworm AS production
 
 RUN apt-get update && apt-get install libpq5 -y
 

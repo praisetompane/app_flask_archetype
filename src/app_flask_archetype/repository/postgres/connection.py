@@ -1,5 +1,5 @@
 from sqlalchemy import create_engine
-from app_flask_archetype.repository.postgres.postgres_configuration import PostgresConfiguration
+from src.app_flask_archetype.repository.postgres.postgres_configuration import *
 from sqlalchemy.engine import Engine, Connection
 
 

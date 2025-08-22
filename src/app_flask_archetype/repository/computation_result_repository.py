@@ -3,8 +3,8 @@ from logging import log
 
 from sqlalchemy import insert, select
 
-from app_flask_archetype.repository.postgres.connection import PostgresConnection
-from app_flask_archetype.repository.schema.computation import Computation
+from src.app_flask_archetype.repository.postgres.connection import PostgresConnection
+from src.app_flask_archetype.repository.schema.computation import Computation
 
 """
     Guide:
@@ -15,15 +15,12 @@ from app_flask_archetype.repository.schema.computation import Computation
 class ComputationResultRepository:
     def __init__(self, database_connection: PostgresConnection) -> None:
         self.database_connection = database_connection
-        self.source_schema = Computation(
-            database_connection.get_connection_engine())
+        self.source_schema = Computation(database_connection.get_connection_engine())
 
     def save(self, data) -> None:
         with self.database_connection.get_connection() as conn:
             result = conn.execute(
-                insert(
-                    self.source_schema.source_data_table()
-                ),
+                insert(self.source_schema.source_data_table()),
                 data,
             )
             conn.commit()
@@ -31,9 +28,7 @@ class ComputationResultRepository:
             log(logging.INFO, f"successfully saved {result.rowcount}")
 
     def retrieve(self):
-        table_columns = (
-            self.source_schema.source_data_table().c
-        )
+        table_columns = self.source_schema.source_data_table().c
         with self.database_connection.get_connection() as conn:
             result = conn.execute(
                 select(

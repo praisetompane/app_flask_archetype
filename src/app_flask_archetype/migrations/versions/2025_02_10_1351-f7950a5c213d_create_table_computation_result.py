@@ -59,6 +59,4 @@ def upgrade() -> None:
 
 def downgrade() -> None:
     conn = op.get_bind()
-    conn.execute(
-        sa.DDL("DROP TABLE IF EXISTS computation.computation_result;")
-    )
+    conn.execute(sa.DDL("DROP TABLE IF EXISTS computation.computation_result;"))

@@ -3,8 +3,8 @@ import sys
 import os
 from logging import log
 from flask import Flask
-from app_flask_archetype.api.api import app_api
-from app_flask_archetype.api.health_check import health_check_api
+from src.app_flask_archetype.api.api import app_api
+from src.app_flask_archetype.api.health_check import health_check_api
 
 logging.basicConfig(stream=sys.stdout, level=logging.INFO)
 
@@ -12,8 +12,7 @@ logging.basicConfig(stream=sys.stdout, level=logging.INFO)
 def create_app(test_config=None) -> Flask:
     app = Flask(__name__, instance_relative_config=True)
     app.register_blueprint(app_api, url_prefix="/app_flask_archetype/api")
-    app.register_blueprint(
-        health_check_api, url_prefix="/app_flask_archetype/api")
+    app.register_blueprint(health_check_api, url_prefix="/app_flask_archetype/api")
 
     app.config.from_mapping(
         SECRET_KEY="dev",
@@ -34,5 +33,4 @@ def create_app(test_config=None) -> Flask:
 
 if __name__ == "__main__":
     log(logging.INFO, "Starting up app_flask_archetype")
-    app = create_app()
-    app.run()
+    create_app().run()
