@@ -8,7 +8,7 @@ threads = int(os.environ.get("GUNICORN_THREADS", "4"))
 # timeout = int(os.environ.get('GUNICORN_TIMEOUT', '120'))
 
 port = os.environ.get("PORT")
-bind = os.environ.get(F"GUNICORN_BIND", "0.0.0.0:{port}")
+bind = os.environ.get(f"GUNICORN_BIND", "0.0.0.0:{port}")
 
 wsgi_app = "app_flask_archetype.app:create_app()"
 
