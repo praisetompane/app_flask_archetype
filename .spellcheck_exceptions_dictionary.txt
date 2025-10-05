@@ -1,4 +1,4 @@
-# abbreviation
+# acronyms/abbreviations
 autogenerate
 basicConfig
 certifi
@@ -26,9 +26,6 @@ str
 svg
 sys
 uri
-
-
-# acronyms
 APIs
 CLI
 CONF
@@ -47,13 +44,10 @@ YYYY
 praisetompane
 
 
-# concepts
+# domain specific
 Dockerfile
-dockerfile
 validator
 async
-
-# domain specific
 ComputationResultRepository
 DataSourceDim
 DataSourceDimType

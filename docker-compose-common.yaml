@@ -1,6 +1,6 @@
 services:
   app_flask_archetype_postgres_service:
-    image: "postgres:latest"
+    image: postgres:17
     container_name: "app_flask_archetype_postgres_service"
     restart: always
     ports:
